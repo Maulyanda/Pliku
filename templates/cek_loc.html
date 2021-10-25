@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Cek Location<small> Welcome {{session.username}}</small></h1>
+  <a class="btn btn-success" href="/add_cek_loc"> Add cek_loc</a>
+  <hr>
+  <table class="table table-striped">
+    <tr>
+      <th>True Cek</th>
+      <th>False ek</th>
+
+    </tr>
+    {% for cek_loc in cek_loc %}
+      <tr>
+        <td>{{cek_loc.true_cek}}</td>
+        <td>{{cek_loc.false_cek}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

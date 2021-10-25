@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Hasil Algoritma RANSAC</h1>
+
+  <hr>
+  <table class="table table-striped">
+  <h3> Evaluasi Data </h3>
+    <tr>
+      <th></th>
+      <th>Frekuensi Cek</th>
+      <th></th>
+      <th>Frekuensi Cek</th>
+    </tr>
+    {% for hasil in hasil %}
+      <tr>
+        <td>FL(FALSE DLOC)</td>
+        <td>{{hasil.frekuensii_cek}}</td>
+        <td>FL(FALSE LES)</td>
+        <td>{{hasil.frekuensii_cek}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <table class="table table-striped">
+  <h3> Hasil Evaluasi Data </h3>
+    <tr>
+      <th>Cek</th>
+      <th>Frekuensi Cek</th>
+      <th>Presentase</th>
+
+    </tr>
+    {% for hasil in hasil %}
+      <tr>
+        <td>{{hasil.cek}}</td>
+        <td>{{hasil.frekuensii_cek}}</td>
+        <td>{{hasil.presentase}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <table class="table table-striped">
+  <h3> Hasil Akhir Akurasi Data Menggunakan Algoritma RANSAC </h3>
+    <tr>
+      <th>Hasil</th>
+
+    </tr>
+    {% for hasil in hasil %}
+      <tr>
+        <td>Akurasi = {{hasil.presentase}}%</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Hasil Algoritma RANSAC</h1>
+
+  <hr>
+  <table class="table table-striped">
+  <h3> Evaluasi Data </h3>
+    <tr>
+      <th>TL (True LES)</th>
+      <th>TD (True DLOC)</th>
+      <th>FL (False LES)</th>
+      <th>FD (False DLOC)</th>
+    </tr>
+    {% for coba in coba %}
+      <tr>
+        <td>{{coba.frekuensi_true}}</td>
+        <td>{{coba.frekuensi_true}}</td>
+        <td>{{coba.frekuensi_false}}</td>
+        <td>{{coba.frekuensi_false}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+
+  <table class="table table-striped">
+  <h3> Hasil Evaluasi Data </h3>
+  <tr>
+    <th>Hasil Evaluasi, Akurasi = TL+TD/TL+TD+FL+FD</th>
+  </tr>
+    {% for coba in coba %}
+      <tr>
+        <td><center><h2>Akurasi = {{coba.frekuensi_true}}+{{coba.frekuensi_true}}/{{coba.frekuensi_true}}+{{coba.frekuensi_true}}+{{coba.frekuensi_false}}+{{coba.frekuensi_false}}</center></h2></td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <table class="table table-striped">
+  <h3> Hasil Akhir Akurasi Data Menggunakan Algoritma RANSAC </h3>
+    <tr>
+      <th>Hasil Akurasi</th>
+    </tr>
+    {% for coba in coba %}
+      <tr>
+        <td><center><h2>Akurasi = {{coba.persentase_true}}%</center></h2></td>
+      </tr>
+    {% endfor %}
+    {% for coba in coba %}
+      <td><center>Hasil pengujian dari data lokasi barang pada wms dan les, didapatkan hasil dengan tingkat akurasi keakuratan data lokasi barang sebesar {{coba.persentase_true}}%</center></td>
+    {% endfor %}
+  </table>
+{% endblock %}

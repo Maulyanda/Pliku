@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Location</h1>
+
+  <!-- <a class="btn btn-success" href=""> Import</a> -->
+
+  <a class="btn btn-success" href="/add_location"> Add Location</a>
+  <hr>
+  <table class="table table-striped">
+    <tr>
+      <th>Part Number</th>
+      <th>WMS</th>
+      <th>LES</th>
+      <th>Cek</th>
+      <th></th>
+      <th></th>
+
+    </tr>
+    {% for location in location %}
+      <tr>
+        <td>{{location.part_number}}</td>
+        <td>{{location.wms}}</td>
+        <td>{{location.les}}</td>
+        <td>{{location.cek}}</td>
+        <td><a href="edit_location/{{location.part_number}}" class="btn btn-default pull-right">Edit</a></td>
+        <td>
+          <form action="{{url_for('delete_location', part_number=location.part_number)}}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-danger">
+          </form>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
